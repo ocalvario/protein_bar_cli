@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/protein_bar_cli'
+
+ProteinBarCli::CLI.new.call
