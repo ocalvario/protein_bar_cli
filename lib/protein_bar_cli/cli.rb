@@ -21,7 +21,7 @@ class ProteinBarCli::CLI
   end
   
   def get_user_selection
-    bar_selection = gets.strip
+    bar_selection = gets.strip.to_i
        show_details_for(bar_selection) if valid_input(bar_selection, @choices)
   end
   
