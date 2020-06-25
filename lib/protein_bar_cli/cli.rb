@@ -9,14 +9,16 @@ class ProteinBarCli::CLI
   
   def get_bar_options
     # to be scraped instead
-    @choices = ["Cliff Bar", "Builder Bar", "MetrRX", "think Bar"]
+    ProteinBarCli::Bar.new("Cliff Bar")
+    ProteinBarCli::Bar.new("Builder Bar")
+    @choices = ProteinBarCli::Bar.all
   end
   
   def list_bar_options
     #list bar choices
     puts "\nPlease select one of the following protein bar options for more information:\n"
     @choices.each.with_index(1)  do |choice, index|
-      puts "#{index}. #{choice}"
+      puts "#{index}. #{choice.name}"
     end
   end
   
@@ -31,7 +33,11 @@ class ProteinBarCli::CLI
   
   def show_details_for(bar_selection)
     choice = @choices[bar_selection - 1]
-    puts "Here are the raitings details for #{choice}"
+    puts "\nHere are the raitings details for #{choice}:\n"
+    #To implement
+    # ProteinBarCli::Protein_Bar.all.each.with_index(1) do | bar |
+      # puts raitings
+    #end
   end
  
 end 
