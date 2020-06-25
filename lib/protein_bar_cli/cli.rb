@@ -22,12 +22,16 @@ class ProteinBarCli::CLI
   
   def get_user_selection
     bar_selection = gets.strip
-      if valid_input(bar_selection.to_i, @choices)
-      end
+       show_details_for(bar_selection) if valid_input(bar_selection, @choices)
   end
   
   def valid_input(input, data)
-    input <= @choices.length && input > 0
-  end  
+    input.to_i <= data.length && input.to_i > 0
+  end
   
+  def show_details_for(bar_selection)
+    choice = @choices[bar_selection - 1]
+    puts "Here are the raitings details for #{choice}"
+  end
+ 
 end 
