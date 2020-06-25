@@ -8,6 +8,7 @@ class ProteinBarCli::Bar
   end
   
   def self.all
+    ProteinBarCli::Scraper.scrape_choices if @@all.empty?
     @@all
   end
   
