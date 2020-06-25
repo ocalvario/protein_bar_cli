@@ -31,6 +31,8 @@ class ProteinBarCli::CLI
   
   def show_details_for(bar_selection)
     choice = @choices[bar_selection - 1]
+    ProteinBarCli::Raiting
+    raitings = choice.raitings
     puts "\nHere are the raitings details for #{choice.name}:\n"
     #To implement
     # ProteinBarCli::Protein_Bar.all.each.with_index(1) do | bar |

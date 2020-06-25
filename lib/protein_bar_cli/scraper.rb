@@ -8,5 +8,8 @@ class ProteinBarCli::Scraper
       ProteinBarCli::Bar.new(name)
     end 
   end
+  
+  
+  
 end 
 
