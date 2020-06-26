@@ -1,11 +1,10 @@
 class ProteinBarCli::Bar
   @@all = []
-  attr_accessor :name
-  attr_writer :raitings
+  attr_accessor :name, :url
   
-  def initialize(name)
+  def initialize(name, url)
     @name = name
-    @raitings = []
+    @url = url
     save
   end
   
