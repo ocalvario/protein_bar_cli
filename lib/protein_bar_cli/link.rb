@@ -1,6 +1,6 @@
 class ProteinBarCli::Link
   
-  attr_accessor :url, :detail, :name
+  attr_accessor :url, :detail, :name, :score
   
   @@all = []
   
@@ -9,8 +9,10 @@ class ProteinBarCli::Link
     @url = "https://labdoor.com#{url}"
     @detail = []
     @name = []
+    @score = []
     get_details
     get_name
+    get_score
     save
   end
   
@@ -25,6 +27,10 @@ class ProteinBarCli::Link
   
   def get_name
     ProteinBarCli::Scraper.scrape_name(self) if @name.empty?
+  end
+  
+  def get_score
+    ProteinBarCli::Scraper.scrape_score(self) if @score.empty?
   end
   
   def save

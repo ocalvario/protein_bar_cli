@@ -8,7 +8,7 @@ class ProteinBarCli::CLI
   end 
   
   def get_bar_options
-    @choices = ProteinBarCli::Link.all
+    @choices = ProteinBarCli::Link.all.sort_by(&:name)
   end
   
   def list_bar_options
@@ -39,7 +39,7 @@ class ProteinBarCli::CLI
     #To implement
     # ProteinBarCli::Protein_Bar.all.each.with_index(1) do | bar |
       # puts raitings
-    #puts "1. Labdoor Score = #{raiting.score} ... 2. Key Details: #{raiting.key_detail}"
+    puts "1. Labdoor Score = #{choice.score} ... 2. Key Details: #{choice.detail}"
   end
  
 end 

@@ -34,7 +34,15 @@ class ProteinBarCli::Scraper
     title = doc.css("h1").first.text
     link.name = title
     
-  end  
+  end
+  
+  def self.scrape_score(link)
+    site = link.url
+    doc = Nokogiri::HTML(open(site))
+    
+    value = doc.css("span.labdoorScoreValue").text.strip
+    link.score = value
+  end   
   
 end 
 
