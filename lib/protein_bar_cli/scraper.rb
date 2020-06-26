@@ -18,5 +18,14 @@ class ProteinBarCli::Scraper
      ProteinBarCli::Link.new(url) 
     end
   end
+  
+  def self.scrape_detail(link)
+    site = link.url
+    doc = Nokogiri::HTML(open(site))
+    
+    info = doc.css("section div p").text.strip
+    link.detail << info
+  end 
+  
 end 
 
