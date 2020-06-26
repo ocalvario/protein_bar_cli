@@ -1,11 +1,12 @@
 class ProteinBarCli::Raiting
   
-  attr_accessor :name, :score, :key_data
+  attr_accessor :url, :name, :score,:key_data
+  
   @@all = []
   
   
-  def initialize(name)
-    @name = name
+  def initialize(@url)
+    @url = url 
     @raitings = []
     save
   end
