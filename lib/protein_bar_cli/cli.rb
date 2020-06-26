@@ -7,7 +7,8 @@ class ProteinBarCli::CLI
   @@white="\e[0m"
   
   def call 
-    puts "\n#{@@grn}Welcome to Protein Bar Raitings!#{@@white}\n"
+    puts "\n#{@@grn}Welcome to Protein Bar Raitings!#{@@white}\n 
+    \nFor your shopping convenience, this CLI provides you with Labdoor raitings of your favorite protein bar snacks.\n"
     @input = ""
     until @input == "exit"
       get_bar_options
@@ -19,7 +20,7 @@ class ProteinBarCli::CLI
   end 
   
   def get_bar_options
-    @choices = ProteinBarCli::Link.all.sort_by(&:name)
+    @choices = ProteinBarCli::Bar.all.sort_by(&:name)
   end
   
   def list_bar_options
@@ -39,19 +40,15 @@ class ProteinBarCli::CLI
     input.to_i <= data.length && input.to_i > 0
   end
   
-  def get_detail
-    @raitings = ProteinBarCli::Detail.all 
-  end
-  
   def show_details_for(bar_selection)
     choice = @choices[bar_selection - 1]
-    puts "\nHere are the raitings details for #{choice.name}:\n"
-    puts "\n1. Labdoor Score = #{@@mag}#{choice.score}#{@@white}\n
-          \n2. Key Details: #{choice.detail}\n"
+    puts "\nHere are the raitings details for #{@@blu}#{choice.name}#{@@white}:\n"
+    puts "\n1. Labdoor Score = #{@@blu}#{choice.score}#{@@white}\n
+          \n2. Key Details: #{@@blu}#{choice.detail}#{@@white}\n"
   end
   
   def what_next
-    puts "\nAre you done? Type #{@@mag}'exit'#{@@white} to exit or hit any key to see more events.\n"
+    puts "\nAre you finished? Type #{@@mag}'exit'#{@@white} to exit or hit any key to see more protein bars.\n"
     @input = gets.strip
   end 
   

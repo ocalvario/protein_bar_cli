@@ -15,19 +15,11 @@ class ProteinBarCli::Scraper
     
     hrefs.each do |href|
       url = href
-     ProteinBarCli::Link.new(url) 
+     ProteinBarCli::Bar.new(url) 
     end
   end
   
-  def self.scrape_detail(link)
-    site = link.url
-    doc = Nokogiri::HTML(open(site))
-    
-    info = doc.css("section div p").text.strip
-    link.detail = info
-  end
-  
-  def self.scrape_name(link)
+ def self.scrape_name(link)
     site = link.url
     doc = Nokogiri::HTML(open(site))
     
@@ -43,6 +35,14 @@ class ProteinBarCli::Scraper
     value = doc.css("span.labdoorScoreValue").text.strip
     link.score = value
   end   
+  
+  def self.scrape_detail(link)
+    site = link.url
+    doc = Nokogiri::HTML(open(site))
+    
+    info = doc.css("section div p").text.delete_suffix('---')
+    link.detail = info
+  end
   
 end 
 
