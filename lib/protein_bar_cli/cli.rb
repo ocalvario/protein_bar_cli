@@ -15,7 +15,7 @@ class ProteinBarCli::CLI
     #list bar choices
     puts "\nPlease select one of the following protein bar options for more information:\n"
     @choices.each.with_index(1)  do |choice, index|
-      puts "#{index}. #{choice.detail}"
+      puts "#{index}. #{choice.name}"
     end
   end
   
@@ -35,7 +35,7 @@ class ProteinBarCli::CLI
   def show_details_for(bar_selection)
     choice = @choices[bar_selection - 1]
     #raiting = @raitings[bar_selection -1]
-    puts "\nHere are the raitings details for #{choice.detail}:\n"
+    puts "\nHere are the raitings details for #{choice.name}:\n"
     #To implement
     # ProteinBarCli::Protein_Bar.all.each.with_index(1) do | bar |
       # puts raitings
