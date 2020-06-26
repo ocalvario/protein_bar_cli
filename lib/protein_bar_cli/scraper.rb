@@ -5,14 +5,7 @@ class ProteinBarCli::Scraper
     
       choices.each do |choice|
         name = choice.text
-      
-    doc = Nokogiri::HTML(open("https://labdoor.com/rankings/protein-bars"))
-    hrefs = doc.css("a.categoryListItemSeeMore").map {|anchor| anchor["href"]}
-    
-      hrefs.each do |href|
-        url = href
-      
-      ProteinBarCli::Bar.new(name, url)
+      ProteinBarCli::Bar.new(name)
     end 
   end
   
@@ -22,9 +15,8 @@ class ProteinBarCli::Scraper
     
     hrefs.each do |href|
       url = href
-      ProteinBarCli::Raiting.new(url)
+     ProteinBarCli::Link.new(url) 
     end
-    
   end
-  
+end 
 

@@ -1,21 +1,15 @@
 class ProteinBarCli::Bar
   @@all = []
-  attr_accessor :name, :url
+  attr_accessor :name
   
-  def initialize(name, url)
+  def initialize(name)
     @name = name
-    @url = url
     save
   end
   
   def self.all
     ProteinBarCli::Scraper.scrape_choices if @@all.empty?
     @@all
-  end
-  
-  def raitings
-    ProteinBarCli::Scraper.scrape_raitings(self) if @raitings.empty?  
-    @raitings
   end
   
   def save
