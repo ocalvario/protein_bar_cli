@@ -1,10 +1,21 @@
 class ProteinBarCli::CLI 
+  @@muted="\e[1;31m"
+  @@grn="\e[1;32m"
+  @@blu="\e[1;34m"
+  @@mag="\e[1;35m"
+  @@cyn="\e[1;36m"
+  @@white="\e[0m"
   
   def call 
-    puts "\nWelcome to Protein Bar Raitings!\n"
-    get_bar_options
-    list_bar_options
-    get_user_selection
+    puts "\n#{@@grn}Welcome to Protein Bar Raitings!#{@@white}\n"
+    @input = ""
+    until @input == "exit"
+      get_bar_options
+      list_bar_options
+      get_user_selection
+      what_next
+    end
+    goodbye
   end 
   
   def get_bar_options
@@ -34,12 +45,17 @@ class ProteinBarCli::CLI
   
   def show_details_for(bar_selection)
     choice = @choices[bar_selection - 1]
-    #raiting = @raitings[bar_selection -1]
     puts "\nHere are the raitings details for #{choice.name}:\n"
-    #To implement
-    # ProteinBarCli::Protein_Bar.all.each.with_index(1) do | bar |
-      # puts raitings
-    puts "1. Labdoor Score = #{choice.score} ... 2. Key Details: #{choice.detail}"
+    puts "\n1. Labdoor Score = #{@@mag}#{choice.score}#{@@white}\n
+          \n2. Key Details: #{choice.detail}\n"
   end
- 
+  
+  def what_next
+    puts "\nAre you done? Type #{@@mag}'exit'#{@@white} to exit or hit any key to see more events.\n"
+    @input = gets.strip
+  end 
+  
+  def goodbye
+    puts "\n#{@@grn}Happy snacking!#{@@white}\n"
+  end
 end 
