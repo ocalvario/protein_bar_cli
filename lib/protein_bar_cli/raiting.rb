@@ -1,14 +1,18 @@
 class ProteinBarCli::Raiting
   
-  attr_accessor :url, :name, :score,:key_data
+  attr_accessor :url
   
   @@all = []
   
   
-  def initialize(@url)
+  def initialize(url)
     @url = url 
-    @raitings = []
     save
+  end
+  
+  def self.all
+    ProteinBarCli::Scraper.scrape_links if @@all.empty?
+    @@all
   end
   
   def save

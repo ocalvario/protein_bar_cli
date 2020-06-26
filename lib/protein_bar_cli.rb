@@ -2,6 +2,7 @@ require_relative "./protein_bar_cli/version"
 require_relative "./protein_bar_cli/cli"
 require_relative "./protein_bar_cli/bar"
 require_relative "./protein_bar_cli/scraper"
+require_relative "./protein_bar_cli/raiting"
 
 require "pry"
 require 'nokogiri'
