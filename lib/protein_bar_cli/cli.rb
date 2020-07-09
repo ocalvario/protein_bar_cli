@@ -55,4 +55,7 @@ class ProteinBarCli::CLI
   def goodbye
     puts "\n#{@@grn}Happy snacking!#{@@white}\n"
   end
-end 
+end
+
+
+

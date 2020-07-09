@@ -7,11 +7,6 @@ class ProteinBarCli::Bar
   
   def initialize(url)
     @url = "https://labdoor.com#{url}"
-    @name = []
-    @score = []
-    @detail = []
-    get_name
-    get_score
     get_details
     save
   end
@@ -21,16 +16,8 @@ class ProteinBarCli::Bar
     @@all
   end
   
-  def get_name
-    ProteinBarCli::Scraper.scrape_name(self) if @name.empty?
-  end
-  
-  def get_score
-    ProteinBarCli::Scraper.scrape_score(self) if @score.empty?
-  end
-  
   def get_details
-    ProteinBarCli::Scraper.scrape_detail(self) if @detail.empty?
+    ProteinBarCli::Scraper.scrape_details(self)
   end
   
   def save
